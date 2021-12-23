@@ -11,8 +11,17 @@ int main(){
         std::cin >> coeficient;
         coeficients.push_back(coeficient);
     }
-
     numerical_calculus::Integration I;
+    float integral = 0;
     I.setFunction(coeficients, degree);
-    I.trapezoidal(1,3,5);
+
+    std::cout << "Put the interval x_min and x_max: " << std::endl;
+    int x_min; std::cin >> x_min;
+    int x_max; std::cin >> x_max;
+
+    std::cout << "Put the number of partitions: " << std::endl;
+    int n; std::cin >> n;
+
+    integral = I.trapezoidal(x_min,x_max,n);
+    std::cout << "Result: "<< integral << std::endl;
 }
