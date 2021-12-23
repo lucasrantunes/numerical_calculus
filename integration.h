@@ -4,7 +4,7 @@
 namespace numerical_calculus{
     class Integration{
         public:
-            void setFunction(std::vector<float> coeficients, float degree);
+            Integration(std::vector<float> coeficients, float degree);
             float trapezoidal(float x_min_, float x_max_, int n_);
         private:
             float degree_ = 0;

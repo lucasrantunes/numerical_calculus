@@ -2,7 +2,8 @@
 #include <iostream>
 #include <cmath>
 namespace numerical_calculus{
-    void Integration::setFunction(std::vector<float> coeficients, float degree){
+    // Constructor
+    Integration::Integration(std::vector<float> coeficients, float degree){
         degree_ = degree;
         coeficients_ = coeficients;
     }
