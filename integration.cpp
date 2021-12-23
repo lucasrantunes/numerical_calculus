@@ -2,14 +2,15 @@
 #include <iostream>
 #include <cmath>
 namespace numerical_calculus{
-    // Constructor
+    //  Constructor: create the instance of our class.
     Integration::Integration(std::vector<float> coeficients, float degree){
         degree_ = degree;
         coeficients_ = coeficients;
     }
 
+    //  Get f(x) values
     float Integration::function(float x){
-        float y = 0.0;
+        float y = 0;
         for (int i = 0; i <= degree_; i++)
         {
             y = y + coeficients_[i]*std::pow(x, degree_ - i);
@@ -17,30 +18,25 @@ namespace numerical_calculus{
         return y;
     }
 
+    // Trapezoidal rule for integration
     float Integration::trapezoidal(float x_min_, float x_max_, int n_){
         float h = 0.0;
         h = (x_max_ - x_min_)/(n_);
         
-        std::vector<float> S;
         float x = x_min_;
+        float sum = 0;
         for (int i = 0; i <= n_; i++)
         {
             if (i==0 || i==n_)
             {
-                S.push_back(function(x));
+                sum = sum + function(x);
             }else{
-                S.push_back(2*function(x));
+                sum = sum + 2*function(x);
             }
             x = x+h;
         }
-        float sum_S = 0;
-        for (int i = 0; i <= n_; i++)
-        {
-            sum_S = sum_S + S[i];
-        }
         
-        float integral = 0;
-        integral = h/2*sum_S;
+        float integral = h/2*sum;
         return integral;
     }
 }
